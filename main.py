@@ -33,13 +33,14 @@ def process_resume(resume_file, job_desc):
 with gr.Blocks() as demo:
     gr.Markdown("# 📄 AI-Powered Resume Scanner")
     with gr.Row():
-        resume_input = gr.File(label="Upload File", type="filepath")
-        jd_input = gr.Textbox(label="Enter Job Description", lines=6, placeholder="Job Description....")
-    
-    btn = gr.Button("Scan Resume")
+        with gr.Column(scale=1):
+            resume_input = gr.File(label="Upload File", type="filepath")
+            jd_input = gr.Textbox(label="Enter Job Description", lines=6, placeholder="Job Description....")
+            btn = gr.Button("Scan Resume")
 
-    status = gr.Markdown()
-    output = gr.Markdown("# Resume Analysis")
+        with gr.Column(scale=2):
+            status = gr.Markdown()
+            output = gr.Markdown("# Resume Analysis")
 
     def set_status(resume_file, job_desc):
         return "Analyzing Resume....."
